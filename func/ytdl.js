@@ -2,6 +2,7 @@ import ytdl from '@distube/ytdl-core'
 import fs from 'fs/promises'
 import path from 'path'
 import { Client } from 'undici'
+import axios from 'axios'
 import { fileURLToPath } from 'url'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -36,6 +37,17 @@ class YTDL {
     }
   }
 
+  async shortenURL(url) {
+    if (!url || url === "-") return "-";
+    try {
+      const response = await axios.get(`https://tinyurl.com/api-create.php?url=${url}`);
+      return response.data;
+    } catch (error) {
+      console.error('Error shortening URL:', error);
+      return "-";
+    }
+  }
+
   async ytvideo(url) {
     try {
       if (!this.client) {
@@ -43,12 +55,13 @@ class YTDL {
       }
       const yt = await ytdl.getInfo(url, { requestOptions: { client: this.client } })
       const link = ytdl.chooseFormat(yt.formats, { quality: 'highest', filter: 'audioandvideo' })
+      const shortVideoURL = await this.shortenURL(link.url);
 
       return {
-        creator: 'Guru sensei',
+        creator: 'galihrhgnwn',
         title: yt.videoDetails.title,
         author: yt.videoDetails.author.name,
-        video_url: link.url,
+        video_url: shortVideoURL,
         description: yt.videoDetails.description,
       }
     } catch (error) {
@@ -64,12 +77,13 @@ class YTDL {
       }
       const yt = await ytdl.getInfo(url, { requestOptions: { client: this.client } })
       const link = ytdl.chooseFormat(yt.formats, { quality: 'highestaudio' })
+      const shortAudioURL = await this.shortenURL(link.url);
 
       return {
-        creator: 'Guru sensei',
+        creator: 'galihrhgnwn',
         title: yt.videoDetails.title,
         author: yt.videoDetails.author.name,
-        audio_url: link.url,
+        audio_url: shortAudioURL,
         description: yt.videoDetails.description,
       }
     } catch (error) {
