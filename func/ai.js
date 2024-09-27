@@ -1,59 +1,12 @@
 import axios from 'axios'
-import { Sequelize, DataTypes } from 'sequelize'
-import dotenv from 'dotenv'
-import * as pg from 'pg'
 
-dotenv.config()
-
-if (!process.env.DATABASE_URL) {
-  throw new Error('DATABASE_URL variable is not set')
-}
-
-const sequelize = new Sequelize(process.env.DATABASE_URL, {
-  dialect: 'postgres',
-  protocol: 'postgres',
-  logging: false,
-})
-
-const Conversation = sequelize.define(
-  'Conversation',
-  {
-    username: { type: DataTypes.STRING, allowNull: false },
-    messages: {
-      type: DataTypes.JSONB,
-      allowNull: false,
-      defaultValue: [],
-    },
-  },
-  {
-    tableName: 'conversations',
-    timestamps: true,
-  }
-)
-
-async function syncDatabase() {
-  try {
-    await sequelize.sync({ force: false })
-    console.log('Database synchronized successfully.')
-  } catch (err) {
-    console.error('Error synchronizing the database:', err)
-  }
-}
-
-syncDatabase()
-
+// fungsi untuk interaksi dengan Bing
 async function bing(username, query) {
   try {
     const userMessage = { role: 'user', content: query }
+    const messages = [userMessage]
 
-    let conversation = await Conversation.findOne({ where: { username } })
-    if (!conversation) {
-      conversation = await Conversation.create({ username, messages: [] })
-    }
-
-    const messages = conversation.messages.concat(userMessage)
-    conversation.messages = messages
-
+    // melakukan request ke API Bing
     const response = await axios.post(
       'https://nexra.aryahcr.cc/api/chat/complements',
       {
@@ -105,8 +58,6 @@ async function bing(username, query) {
       return "Sorry, I couldn't process your request at the moment."
     } else {
       const botMessage = result.message
-      conversation.messages.push({ role: 'assistant', content: botMessage })
-      await conversation.save()
       return botMessage
     }
   } catch (error) {
@@ -115,17 +66,11 @@ async function bing(username, query) {
   }
 }
 
+// fungsi untuk interaksi dengan GPT-4
 async function gpt4(username, prompt) {
   try {
     const userMessage = { role: 'user', content: prompt }
-
-    let conversation = await Conversation.findOne({ where: { username } })
-    if (!conversation) {
-      conversation = await Conversation.create({ username, messages: [] })
-    }
-
-    const messages = conversation.messages.concat(userMessage)
-    conversation.messages = messages
+    const messages = [userMessage]
 
     const data = {
       messages: [{ role: 'assistant', content: 'Hello! How are you today?' }, ...messages],
@@ -144,8 +89,6 @@ async function gpt4(username, prompt) {
 
     if (response.status === 200) {
       const botMessage = response.data.gpt
-      conversation.messages.push({ role: 'assistant', content: botMessage })
-      await conversation.save()
       return botMessage
     } else {
       console.error('Error:', response.statusText)
