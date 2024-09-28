@@ -50,7 +50,7 @@ router.get('/v2/ytmp4', async (req, res) => {
 })
 
 // Route untuk ytplay (implementasi dari ../func/ytplay.js)
-router.get('/ytplay', async (req, res) => {
+router.get('/pm/ytplay', async (req, res) => {
   const query = req.query.query
   const type = req.query.type || 'video' // default video
 
