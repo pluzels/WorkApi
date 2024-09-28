@@ -24,6 +24,7 @@ import xnxxdl from './routes/xnxxdl.js'
 import ytdll from './routes/ytdl.js'
 import vadapav from './routes/vp.js'
 import news from './routes/news.js'
+import ytplay from './routes/youtube-p.js' // tambahkan youtube-p
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -71,6 +72,7 @@ app.use('/ttp', ttp)
 app.use('/bingimg', bingimg)
 app.use('/vadapav', vadapav)
 app.use('/news', news)
+app.use('/ytplay', ytplay) // tambahkan youtube-p
 
 app.listen(8080, () => {
   console.log('Server is running on port 8080')
