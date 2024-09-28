@@ -1,0 +1,718 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Galihrhgnwnn API</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        color: #e0e0e0;
+        background-color: #000;
+      }
+      .welcome-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #000;
+        color: #fff;
+        text-align: center;
+        padding: 0 20px;
+      }
+      .welcome-section h1 {
+        margin: 0;
+        font-size: 3rem;
+        font-weight: 700;
+      }
+      .welcome-section p {
+        margin: 20px 0;
+        font-size: 1.5rem;
+        font-weight: 300;
+      }
+      .scroll-button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 1.2rem;
+        color: #000;
+        background-color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition:
+          background-color 0.3s,
+          color 0.3s;
+      }
+      .scroll-button:hover {
+        background-color: #e0e0e0;
+        color: #000;
+      }
+      .content {
+        margin: 20px;
+      }
+      h1 {
+        color: #fff;
+      }
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+      li {
+        background: #222;
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      }
+      a {
+        text-decoration: none;
+        color: #1e90ff;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      details {
+        margin-top: 10px;
+        padding: 10px;
+        background-color: #333;
+        border-radius: 5px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+      }
+      summary {
+        cursor: pointer;
+        font-weight: bold;
+        color: #fff;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+      }
+      th,
+      td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #444;
+        color: #e0e0e0;
+      }
+      pre {
+        background-color: #222;
+        padding: 10px;
+        border-radius: 5px;
+        white-space: pre-wrap;
+        color: #e0e0e0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="welcome-section">
+      <h1>Welcome to Pluzels API</h1>
+      <p>Scroll down to read the API endpoints.</p>
+      <button
+        class="scroll-button"
+        onclick="document.getElementById('endpoints').scrollIntoView({ behavior: 'smooth' });"
+      >
+        Read Docs
+      </button>
+    </div>
+    <div id="endpoints" class="content">
+      <h1>API Endpoints</h1>
+      <ul>
+        <li>
+          <a href="/spotifysearch">spotifysearch</a>
+          <details>
+            <summary>Details</summary>
+            <table>
+              <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+              </tr>
+              <tr>
+                <td>query</td>
+                <td>string</td>
+                <td>The search term for Spotify.</td>
+              </tr>
+            </table>
+            <p><strong>Request Type:</strong> GET</p>
+            <p><strong>Example Response:</strong></p>
+            <pre>
+"creator": "galihrhgnwn",
+  "status": true,
+  "data": [
+    {
+      "title": "Sidhu Moose Wala - 295",
+      "duration": "4:30",
+      "popularity": "73%",
+      "preview": "https://p.scdn.co/mp3-preview/b3b5cfdc6f46d5c3d912dcdc936f9b3453ad4f9b?cid=adbbc3f9631e42d8b42103a72e447d94",
+      "url": "https://open.spotify.com/track/5W7DOVGQLTigu09afW7QMT"
+    },..]</pre
+            >
+          </details>
+        </li>
+        <li>
+          <a href="/spotifydl">spotifydl</a>
+          <details>
+            <summary>Details</summary>
+            <table>
+              <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+              </tr>
+              <tr>
+                <td>url</td>
+                <td>string</td>
+                <td>The Spotify track url to download.</td>
+              </tr>
+            </table>
+            <p><strong>Request Type:</strong> GET</p>
+            <p><strong>Example Response:</strong></p>
+            <pre>
+ "creator": "galihrhgnwn",
+  "status": true,
+  "data": {
+    "thumbnail": "thumb url",
+    "title": "Sidhu Moose Wala - Levels",
+    "artist": {
+      "external_urls": {
+        "spotify": "track url"
+      },
+      "href": "https://api.spotify.com/v1/artists/4PULA4EFzYTrxYvOVlwpiQ",
+      "id": "4PULA4EFzYTrxYvOVlwpiQ",
+      "name": "Sidhu Moose Wala",
+      "type": "artist",
+      "uri": "spotify:artist:4PULA4EFzYTrxYvOVlwpiQ"
+    },
+    "duration": "3:49",
+    "preview": "preview url",
+    "url": "direct stream url"
+  }</pre
+            >
+          </details>
+        </li>
+        <li>
+          <a href="/igs">igstory</a>
+          <details>
+            <summary>Details</summary>
+            <table>
+              <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+              </tr>
+              <tr>
+                <td>username</td>
+                <td>string</td>
+                <td>The username of the instagram user.</td>
+              </tr>
+            </table>
+            <p><strong>Request Type:</strong> GET</p>
+            <p><strong>Example Response:</strong></p>
+            <pre>waited</pre>
+          </details>
+        </li>
+        <li>
+          <a href="/insta/v1/igdl">instadownloader v1</a>
+          <details>
+            <summary>Details</summary>
+            <table>
+              <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+              </tr>
+              <tr>
+                <td>url</td>
+                <td>string</td>
+                <td>The url of the instagram Reel or post.</td>
+              </tr>
+            </table>
+            <p><strong>Request Type:</strong> GET</p>
+            <p><strong>Example Response:</strong></p>
+            <pre>
+{
+              "creator": "galihrhgnwn",
+              "data": {
+                "creator": "galihrhgnwn",
+                "status": true,
+                "data": [
+                  {
+                    "type": "jpg",
+                    "url": "https://scontent-gmp1-1.cdninstagram.com/v/t51.29350-15/454084599_811661094129287_8030254698722727487_n.heic?stp=c0.420.1080.1080a_dst-jpg_e35&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xMDgweDE5MjAuc2RyLmYyOTM1MCJ9&_nc_ht=scontent-gmp1-1.cdninstagram.com&_nc_cat=1&_nc_ohc=rv3sv6J1WSwQ7kNvgGi75RB&edm=ANmP7GQBAAAA&ccb=7-5&ig_cache_key=MzQyODgxNDExODU2Mjc2MzMyNw%3D%3D.2-ccb7-5&oh=00_AYD8CFRMH_WTWaYTWomw_fdnVmDO_2o1dW3rwqaN5OM4QQ&oe=66B97629&_nc_sid=982cc7"
+                  }
+                ]
+              }
+            }</pre
+            >
+          </details>
+        </li>
+        <li>
+          <a href="/insta/v2/igdl">instadownloader v2</a>
+          <details>
+            <summary>Details</summary>
+            <table>
+              <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+              </tr>
+              <tr>
+                <td>url</td>
+                <td>string</td>
+                <td>The url of the instagram Reel or post.</td>
+              </tr>
+            </table>
+            <p><strong>Request Type:</strong> GET</p>
+            <p><strong>Example Response:</strong></p>
+            <pre>
+              {
+                "creator": "galihrhgnwn",
+                "thumbnail": "https://indownloader.app/file?id=/=",
+                "downloadLinks": [
+                  {
+                    "label": "Download",
+                    "url": "https://indownloader.app/file?id=/&dl=1"
+                  }
+                ]
+              }</pre
+            >
+          </details>
+        </li>
+        <li>
+          <a href="/xdown">X(Twitter) Downloader</a>
+          <details>
+            <summary>Details</summary>
+            <table>
+              <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+              </tr>
+              <tr>
+                <td>url</td>
+                <td>string</td>
+                <td>The url of the twitter/X video.</td>
+              </tr>
+            </table>
+            <p><strong>Request Type:</strong> GET</p>
+            <p><strong>Example Response:</strong></p>
+            <pre>
+{
+              "creator": "galihrhgnwn",
+              "found": true,
+              "media": [
+                {
+                  "url": "https://pbs.twimg.com/media/GTi5drzXUAA8H6Z.jpg",
+                  "type": "image"
+                }
+              ],
+              "date": "Sun Jul 28 03:47:01 +0000 2024",
+              "likes": 988926,
+              "replies": 16927,
+              "retweets": 116407,
+              "authorName": "Elon Musk",
+              "authorUsername": "elonmusk"
+            }</pre
+            >
+          </details>
+        </li>
+        <li>
+          <a href="/fbvideo">facebook dl</a>
+          <details>
+            <summary>Details</summary>
+            <table>
+              <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+              </tr>
+              <tr>
+                <td>url</td>
+                <td>string</td>
+                <td>The url of the facebook Reel/video.</td>
+              </tr>
+            </table>
+            <p><strong>Request Type:</strong> GET</p>
+            <p><strong>Example Response:</strong></p>
+            <pre>
+{
+              "result": {
+                "creator": "galihrhgnwn",
+                "url": "https://fb.watch/tB-FkeDszv/?",
+                "title": "video title",
+                "time": "",
+                "hd": "",
+                "sd": "",
+                "audio": ""
+              }
+            }</pre
+            >
+          </details>
+        </li>
+        <li>
+          <a href="/apksearch">search apk</a>
+          <details>
+            <summary>Details</summary>
+            <table>
+              <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+              </tr>
+              <tr>
+                <td>query</td>
+                <td>string</td>
+                <td>The name of your apk.</td>
+              </tr>
+            </table>
+            <p><strong>Request Type:</strong> GET</p>
+            <p><strong>Example Response:</strong></p>
+            <pre>
+{
+              "creator": "galihrhgnwn",
+              "data": [
+                {
+                  "title": "WhatsApp Messenger 2.24.17.7 beta",
+                  "developer": "by WhatsApp LLC",
+                  "version": "2.24.17.7",
+                  "updated": "August 7, 2024 at 5:07PM UTC",
+                  "downloadCount": "29",
+                  "size": "57.64 MB",
+                  "url": "https://www.apkmirror.com/apk/whatsapp-inc/whatsapp/whatsapp-2-24-17-7-release/"
+                },....]}</pre
+            >
+          </details>
+        </li>
+        <li>
+          <a href="/playstore">search playstore</a>
+          <details>
+            <summary>Details</summary>
+            <table>
+              <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+              </tr>
+              <tr>
+                <td>query</td>
+                <td>string</td>
+                <td>The name of your app.</td>
+              </tr>
+            </table>
+            <p><strong>Request Type:</strong> GET</p>
+            <p><strong>Example Response:</strong></p>
+            <pre>
+[
+              {
+                "creator": "galihrhgnwn",
+                "link": "https://play.google.com/store/apps/details?id=com.whatsapp.w4b",
+                "name": "WhatsApp Business",
+                "developer": "WhatsApp LLC",
+                "img": "https://play-lh.googleusercontent.com/ebs6ftYUkOKlDY0M174OpvargwbDyHUVAnO_G5aE0dL5GBQKCtfh3adN5H3ZMThXogDi=s64",
+                "rating": "Rated 4.2 stars out of five stars",
+                "rating_Num": "4.2",
+                "link_dev": "https://play.google.com/store/apps/developer?id=WhatsApp+LLC"
+              },...]</pre
+            >
+          </details>
+        </li>
+        <li>
+          <a href="/ytdl/ytsearch">search youtube</a>
+          <details>
+            <summary>Details</summary>
+            <table>
+              <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+              </tr>
+              <tr>
+                <td>query</td>
+                <td>string</td>
+                <td>The name of your video.</td>
+              </tr>
+            </table>
+            <p><strong>Request Type:</strong> GET</p>
+            <p><strong>Example Response:</strong></p>
+            <pre>
+{
+              "creator": "galihrhgnwn",
+              "results": [
+                {
+                  "type": "video",
+                  "title": "Abadi",
+                  "description": "Anime Name - Naruto Shippuden Naruto ...",
+                  "url": "https://youtube.com/watch?v=gdUNflpMMbk",
+                  "duration": "33:18",
+                  "views": 93834,
+                  "author": "Animity"
+                },...]}</pre
+            >
+          </details>
+        </li>
+        <li>
+        <a href="/ytdl/ytplay?query=abadi&type=audio">play youtube audio</a>
+          <details>
+            <summary>Details</summary>
+            <table>
+              <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+              </tr>
+              <tr>
+                <td>query</td>
+                <td>string</td>
+                <td>The name of your audio.</td>
+              </tr>
+            </table>
+            <p><strong>Request Type:</strong> GET</p>
+            <p><strong>Example Response:</strong></p>
+            <pre>
+{
+              "creator": "galihrhgnwn",
+              "results": [
+                {
+                  "type": "audio",
+                  "title": "Abadi",
+                  "description": "-",
+                  "url": "-",
+                  "duration": "-",
+                  "views": -,
+                  "author": "-"
+                },...]}</pre
+            >
+          </details>
+        </li>
+        <li>
+         <a href="/ytdl/ytplay?query=abadi&type=video">play youtube audio</a>
+          <details>
+            <summary>Details</summary>
+            <table>
+              <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+              </tr>
+              <tr>
+                <td>query</td>
+                <td>string</td>
+                <td>The name of your video.</td>
+              </tr>
+            </table>
+            <p><strong>Request Type:</strong> GET</p>
+            <p><strong>Example Response:</strong></p>
+            <pre>
+{
+              "creator": "galihrhgnwn",
+              "results": [
+                {
+                  "type": "video",
+                  "title": "Abadi",
+                  "description": "-",
+                  "url": "-",
+                  "duration": "-",
+                  "views": -,
+                  "author": "-"
+                },...]}</pre
+            >
+          </details>
+        </li>
+        <li>
+          <a href="/ytdl/ytmp3">download an audio from youtube</a>
+          <details>
+            <summary>Details</summary>
+            <table>
+              <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+              </tr>
+              <tr>
+                <td>url</td>
+                <td>string</td>
+                <td>The url the of the youtube video</td>
+              </tr>
+            </table>
+            <p><strong>Request Type:</strong> GET</p>
+            <p><strong>Example Response:</strong></p>
+            <pre>
+{
+              "creator": "galihrhgnwn",
+              "title": "Love Nwantiti (Sush & Yohan Mashup) - Bollywood Revibe🦋✨",
+              "author": "Sush & Yohan Music",
+              "audio_url": "dl url",
+              "description": "desc"
+            }</pre
+            >
+          </details>
+        </li>
+        <li>
+          <a href="/ytdl/ytmp4">download a video from youtube</a>
+          <details>
+            <summary>Details</summary>
+            <table>
+              <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+              </tr>
+              <tr>
+                <td>url</td>
+                <td>string</td>
+                <td>The url the of the youtube video</td>
+              </tr>
+            </table>
+            <p><strong>Request Type:</strong> GET</p>
+            <p><strong>Example Response:</strong></p>
+            <pre>
+{
+              "creator": "galihrhgnwn",
+              "title": "Love Nwantiti Revibe🦋✨",
+              "author": "Sush & Yohan Music",
+              "video_url": "dl url",
+              "description": "desc"
+            }</pre
+            >
+          </details>
+        </li>
+        <li>
+          <a href="/bingimg">create image with bing</a>
+          <details>
+            <summary>Details</summary>
+            <table>
+              <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+              </tr>
+              <tr>
+                <td>query</td>
+                <td>string</td>
+                <td>the thing you want to create.</td>
+              </tr>
+            </table>
+            <p><strong>Request Type:</strong> GET</p>
+            <p><strong>Example Response:</strong></p>
+            <pre>
+{
+              "creator": "galihrhgnwn",
+              "status": true,
+              "results": [
+                "https://tse1.mm.bing.net/th/id/OIG2.ZgR3UsFDODIrh0I5Il7k",
+                "https://tse4.mm.bing.net/th/id/OIG2.JTnUuI0VTjod62wlS5Yl",
+                "https://tse1.mm.bing.net/th/id/OIG2.XUflL7BCD0NBV2ACxeHQ",
+                "https://tse2.mm.bing.net/th/id/OIG2.tlEQ8srCCfSOcIA679a5"
+              ]
+            }</pre
+            >
+          </details>
+        </li>
+        <li>
+          <a href="/ai/gpt4">talk with gpt4</a>
+          <details>
+            <summary>Details</summary>
+            <table>
+              <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+              </tr>
+              <tr>
+                <td>username</td>
+                <td>string</td>
+                <td>random string</td>
+              </tr>
+              <tr>
+                <td>query</td>
+                <td>string</td>
+                <td>your prompt.</td>
+              </tr>
+            </table>
+            <p><strong>Request Type:</strong> GET</p>
+            <p><strong>Example Response:</strong></p>
+            <pre>
+{
+              "creator": "galihrhgnwn",
+              "status": true,
+              "msg": "Your name is galih."
+            }</pre
+            >
+          </details>
+        </li>
+        <li>
+          <a href="/ai/bing">talk with Bing</a>
+          <details>
+            <summary>Details</summary>
+            <table>
+              <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+              </tr>
+              <tr>
+                <td>username</td>
+                <td>string</td>
+                <td>random string</td>
+              </tr>
+              <tr>
+                <td>query</td>
+                <td>string</td>
+                <td>your prompt.</td>
+              </tr>
+            </table>
+            <p><strong>Request Type:</strong> GET</p>
+            <p><strong>Example Response:</strong></p>
+            <pre>
+{
+              "creator": "galihrhgnwn",
+              "status": true,
+              "msg": "Your name is galih. 😊"
+            }</pre
+            >
+          </details>
+        </li>
+        <li>
+          <a href="/ttp">text to picture</a>
+          <details>
+            <summary>Details</summary>
+            <table>
+              <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+              </tr>
+              <tr>
+                <td>text</td>
+                <td>string</td>
+                <td>your text</td>
+              </tr>
+              <tr>
+                <td>color</td>
+                <td>string</td>
+                <td>color of text.</td>
+              </tr>
+            </table>
+            <p><strong>Request Type:</strong> GET</p>
+            <p><strong>Example Response:</strong></p>
+            <pre>
+{
+              "creater": "galihrhgnwn",
+              "results": [
+                {
+                  "url": "output.png",
+                  "title": "2024-08-07T14:30:04:548"
+                }
+              ]
+            }</pre
+            >
+          </details>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
