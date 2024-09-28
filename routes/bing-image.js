@@ -7,7 +7,7 @@ router.get('/', async (req, res) => {
   const query = req.query.query
   if (!query)
     return res.json({
-      creator: 'Guru sensei',
+      creator: 'galihrhgnwnn',
       status: false,
       msg: 'query is required',
     })
