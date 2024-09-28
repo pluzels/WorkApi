@@ -5,7 +5,7 @@ const router = express.Router()
 
 router.get('/', async (req, res) => {
   const url = req.query.url
-  if (!url) return res.json({ creator: 'Guru sensei', status: false, msg: 'url is required' })
+  if (!url) return res.json({ creator: 'galihrhgnwnn', status: false, msg: 'url is required' })
   const result = await ssweb(url)
   res.setHeader('Content-Type', 'image/png')
   res.send(result)
