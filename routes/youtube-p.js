@@ -5,7 +5,7 @@ let yt = new ytplay()
 
 const router = express.Router()
 
-router.get('/yt/ytplay', async (req, res) => {
+router.get('/ytplay', async (req, res) => {
   const { url, query, type } = req.query
 
   if (url) {
