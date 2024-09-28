@@ -5,7 +5,7 @@ const router = express.Router()
 
 router.get('/', async (req, res) => {
   const query = req.query.url
-  if (!query) return res.json({ creator: 'Guru sensei', status: false, msg: 'url is required' })
+  if (!query) return res.json({ creator: 'galihrhgnwnn', status: false, msg: 'url is required' })
   const fbdownload = await fbvdl(query)
   res.json(fbdownload)
 })
