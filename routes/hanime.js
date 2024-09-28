@@ -12,7 +12,7 @@ router.get('/trend', async (req, res) => {
 
 router.get('/video', async (req, res) => {
   const url = req.query.url
-  if (!url) return res.json({ creator: 'Guru sensei', status: false, msg: 'url is required' })
+  if (!url) return res.json({ creator: 'galihrhgnwnn', status: false, msg: 'url is required' })
   const video = await getVideo(url)
   res.json(video)
 })
