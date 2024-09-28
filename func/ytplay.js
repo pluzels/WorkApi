@@ -9,7 +9,7 @@ import ytSearch from 'yt-search';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-class YTDL {
+class ytplay {
   constructor() {
     this.client = null;
   }
@@ -115,4 +115,4 @@ class YTDL {
   }
 }
 
-export default YTDL;
+export default ytplay;
