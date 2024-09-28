@@ -1,79 +1,46 @@
-import express from 'express'
 import YTDL from '../func/ytdl.js'
 import Ytdl2 from '../func/y2mate.js'
+import express from 'express'
 import ytsearch from '../func/search/yts.js'
-import express from 'express';
-import YTDL from '../func/ytplay.js'; // Ensure this is the correct path
 
-const router = express.Router();
-const ytplay = new YTDL();
+let ytdl = new YTDL()
+let ytdl2 = new Ytdl2()
+
+const router = express.Router()
 
 router.get('/ytmp3', async (req, res) => {
-  const url = req.query.url;
-  if (!url) return res.json({ creator: 'Guru sensei', status: false, msg: 'URL is required' });
-
-  try {
-    const result = await ytplay.ytaudio(url);
-    res.json(result);
-  } catch (error) {
-    res.json({
-      creator: 'Guru sensei',
-      status: false,
-      msg: 'Error occurred',
-      error: error.message,
-    });
-  }
-});
+  const url = req.query.url
+  if (!url) return res.json({ creator: 'Guru sensei', status: false, msg: 'URL is required' })
+  const search = await ytdl.ytaudio(url)
+  res.json(search)
+})
 
 router.get('/ytmp4', async (req, res) => {
-  const url = req.query.url;
-  if (!url) return res.json({ creator: 'Guru sensei', status: false, msg: 'URL is required' });
-
-  try {
-    const result = await ytplay.ytvideo(url);
-    res.json(result);
-  } catch (error) {
-    res.json({
-      creator: 'Guru sensei',
-      status: false,
-      msg: 'Error occurred',
-      error: error.message,
-    });
-  }
-});
+  const url = req.query.url
+  if (!url) return res.json({ creator: 'Guru sensei', status: false, msg: 'URL is required' })
+  const search = await ytdl.ytvideo(url)
+  res.json(search)
+})
 
 router.get('/ytsearch', async (req, res) => {
-  const query = req.query.query;
-  if (!query) return res.json({ creator: 'Guru sensei', status: false, msg: 'Query is required' });
+  const query = req.query.query
+  if (!query) return res.json({ creator: 'Guru sensei', status: false, msg: 'query is required' })
+  const result = await ytsearch(query)
+  res.json(result)
+})
 
-  try {
-    const result = await ytplay.searchAndDownload(query, 'video');
-    res.json(result);
-  } catch (error) {
-    res.json({
-      creator: 'Guru sensei',
-      status: false,
-      msg: 'Error occurred',
-      error: error.message,
-    });
-  }
+router.get('/v2/ytmp3', async (req, res) => {
+  const url = req.query.url
+  if (!url) return res.json({ creator: 'Guru sensei', status: false, msg: 'URL is required' })
+  const search = await ytdl2.ytaud(url)
+  res.json(search)
 });
 
-router.get('/ytsearch/mp3', async (req, res) => {
-  const query = req.query.query;
-  if (!query) return res.json({ creator: 'Guru sensei', status: false, msg: 'Query is required' });
-
-  try {
-    const result = await ytplay.searchAndDownload(query, 'audio');
-    res.json(result);
-  } catch (error) {
-    res.json({
-      creator: 'Guru sensei',
-      status: false,
-      msg: 'Error occurred',
-      error: error.message,
-    });
-  }
+router.get('/v2/ytmp4', async (req, res) => {
+  const url = req.query.url
+  if (!url) return res.json({ creator: 'Guru sensei', status: false, msg: 'URL is required' })
+  const search = await ytdl2.ytvid(url)
+  res.json(search)
 });
 
-export default router;
+export default router
